@@ -3,14 +3,23 @@ select * from EN_ActionType
 
 insert into EN_Action (ProgramID, ActionTypeID, Name, DisplayName, Description, Enabled, CreatedDate, Points, ActionData) values
 (4, 2, 'FacebookLikeSunsetStripMusicFestival', 'Like the ''Sunset Strip Music Festival'' on Facebook.', 'Like the ''Sunset Strip Music Festival'' on Facebook.', 1, GETDATE(), 100, 'http://www.facebook.com/sunsetstripmusicfestival')
---(4, 1, 'FacebookPostRoxyFlyers', 'Post one of our flyers to your Wall and tell us what you like about it.', 'Check out our flyers here: http://TheRoxyTheatre.imagekind.com. You will receive an additional 5 points for every ''Like'' your post receives.', 1, GETDATE(), 100, 'message=Check out Roxy''s fliers;link=http://TheRoxyTheatre.imagekind.com.')
 
+insert into EN_Action (ProgramID, ActionTypeID, Name, DisplayName, Description, Enabled, CreatedDate, Points, ActionData) values
+(4, 1, 'FacebookWallPostReferFriend', 'Refer-a-friend and you''ll earn points when someone joins Roxy Engage via your link and completes 1 action',
+'Refer a friend to the Roxy Engage platform. You will be rewarded with 200 points every time someone  joins via your link and completes at least one action. If your friend joins the program and then invites one of his or her friends, you will receive 100 points once they sign up. If the friend-of-a-friend gets someone to sign up, you receive an additional 100 points. Due to FanFueled''s patented ''Share, Track, Reward'' software, your influence is tracked and rewarded across multiple degrees of separation.',
+1, GETDATE(), 200, 'link=http://roxy.fanfueledengage.com;description=Check out Roxy''s awesome Engage Program!')
+
+update EN_Action set DisplayName='Follow Sunset Strip Music Festival' where ActionID=396
+update EN_Action set DisplayName='Donate to WesFest 7' where ActionID=394
+update EN_Action set ActionData='http://www.youtube.com/watch?v=vm9QCecmu6Q' where ActionID=402
+update EN_Action set DisplayName='Post a link to our Flyer Store to Facebook' where ActionID=405
+update EN_Action set DisplayName='Tweet out a link to our newsletter to your followers.', Description = 'Your tweet will include the link to Roxy''s newsletter: http://theroxyonsunset.com/' where ActionID=400
 update EN_Action set DisplayName='Like the Roxy Theatre on Facebook.', ActionData='http://www.facebook.com/theroxy' where ActionID=392
 update EN_Action set DisplayName='Like The Sunset Strip on Facebook.', ActionData='http://www.facebook.com/TheSunsetStrip' where ActionID=393
 update EN_Action set Description='Donate to WesFest 7! Learn more here: http://weswehmiller.net/. You will earn 20 points for every $1 donated.', ActionData='http://weswehmiller.net/donate/' where ActionID=394
 update EN_Action set DisplayName='Post our March event calendar to your Wall.' where ActionID=398
 update EN_Action set DisplayName='If you could see any artist perform a secret show at The Roxy, who would it be?', Description='You will receive an additional 5 points for every ''Like'' your post receives' where ActionID=399 
-update EN_Action set DisplayName='Tweet About the Sunset Strip Music Festival Dates', Description='' where ActionID=401
+update EN_Action set DisplayName='Tweet out the dates for the Sunset Strip Music Festival.', Description='' where ActionID=401
 update EN_Action set DisplayName='Watch the Foo Fighters YouTube video of when they shot their documentary here last Februrary!' where ActionID=402
 update EN_Action set DisplayName='Watch this video of Adele at The Roxy in 2007!' where ActionID=403
 
@@ -40,6 +49,9 @@ Earn 17,500 Amount of Points to be Entered into an Exclusive Raffle for this Pri
 update EN_Reward set Quantity=2, Description='Become the ultimate Roxy VIP and gain exclusive access to the soundcheck of your choice. Once you reach 18,500 points, hit ''Enter'' to be eligible for this exclusive raffle. Your points will not be deducted unless you win.' where RewardID=141
 update EN_Reward set Quantity=2, Description='Win a signed set list and VIP access to the show of your choice. This is a once-in-a-lifetime prize and available only on Roxy Engage. Once you reach 18,500 points, hit ''Enter'' to be eligible for this exclusive raffle. Your points will not be deducted unless you win.
 Earn 20,000 Amount of Points to be Entered into an Exclusive Raffle for this Prize.' where RewardID=142
+update EN_Reward set Description='With this prize, any food item on the menu is free the next time you are at The Roxy.' where RewardID=134
+update EN_Reward set Description='Win a Roxy T-Shirt of your choice. Check out the Roxy store for our great selection.' where RewardID=135
+update EN_Reward set Name='A Roxy Print!', Description='Win a print of your favorite Roxy poster and take The Roxy home with you!' where RewardID=136
 
 
 --Images--
@@ -71,3 +83,13 @@ insert into EN_RewardImage (RewardID, Path, IsPrimary) values
 (141, 'https://s3.amazonaws.com/fanfueled-engage/images/roxy-images/roxy-prizes/Roxy_Med_Soundcheck_Prize.jpg', 1),
 (142, 'https://s3.amazonaws.com/fanfueled-engage/images/roxy-images/roxy-prizes/Roxy_Large_Setlist_Prize.jpg', 1),
 (142, 'https://s3.amazonaws.com/fanfueled-engage/images/roxy-images/roxy-prizes/Roxy_Med_Setlist_Prize.jpg', 1)
+
+insert into EN_Image (ImageTypeID, ProgramID, Path) values
+(10, 4, 'https://s3.amazonaws.com/fanfueled-engage/images/roxy-images/roxy-banners/Roxy_Engage-Banner.jpg')
+
+insert into EN_Image (ImageTypeID, ProgramID, Path) values
+(11, 4, 'https://s3.amazonaws.com/fanfueled-engage/images/roxy-images/roxy-banners/Roxy_Favicon.jpg')
+
+insert into EN_Image (ImageTypeID, ProgramID, Path) values
+(1, 4, 'https://s3.amazonaws.com/fanfueled-engage/images/roxy-images/roxy-banners/Roxy_Mid.jpg')
+

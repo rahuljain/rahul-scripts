@@ -1,4 +1,4 @@
-
+--select * from EN_Action where ProgramID=1 and Enabled=1
 
 --(6, 1, 'PostFFEngagePrize', 'Tell us about the FanFueled Engage prize you''re most excited about by posting the answer to your Wall.', 'What FanFueled Engage prize are you going after?', 1, GETDATE(), 150, '')
 
@@ -7,7 +7,7 @@ values
 (6, 2, 'LikeKaskade', 'Like Kaskade', 'Like Kaskade on Facebook', 1, GETDATE(), 100, 'http://www.facebook.com/kaskade/61011643972'),
 (6, 2, 'LikeSkrillex', 'Like Skrillex', 'Like Skrillex on Facebook', 1, GETDATE(), 100, 'http://www.facebook.com/skrillex/119702488081975'),
 (6, 5, 'FollowKraftwerk', 'Follow Kraftwerk ', 'Follow Kraftwerk on Twitter', 1, GETDATE(), 100, 'KRAFTWERK'),
-(6, 1, 'PostCarlCoxInterview', 'Share this link to an interview with Carl Cox at Ultra 2011', 'This link will be posted to your wall: http://www.nme.com/nme-video/youtube/id/10WXB8F4Zqg', 1, GETDATE(), 100, 'description=Check out this interview with Carl Cox at Ultra 2011:;link=http://www.nme.com/nme-video/youtube/id/10WXB8F4Zqg'),
+(6, 1, 'PostCarlCoxInterview', 'Share this link to an interview with Carl Cox at Ultra 2011', 'This link will be posted to your wall: http://www.nme.com/nme-video/youtube/id/10WXB8F4Zqg', 1, GETDATE(), 100, 'description=Check out this interview with Carl Cox at Ultra 2011!;link=http://www.nme.com/nme-video/youtube/id/10WXB8F4Zqg'),
 (6, 6, 'TweetUltraPhotoGallery', 'Tweet out Ultra''s photo gallery to your friends.', 'This is what appears on the tweet: Check out these awesome photos from Ultra: http://www.ultramusicfestival.com/photo-gallery/)', 1, GETDATE(), 150, 'Check out these awesome photos from Ultra: http://www.ultramusicfestival.com/photo-gallery/'),
 (6, 7, 'ReTweetUltra', 'Retweet Ultra Music Festival''s latest tweet about CAN U FEEL IT.', 'You will be Retweeting https://twitter.com/#!/ultramusic/status/179650870961635328', 1, GETDATE(), 50, '179650870961635328'),
 (6, 8, 'WatchUltra2011', 'Relive Ultra 2011 with this video from last year''s festival', '', 1, getdate(), 200, 'http://www.youtube.com/watch?v=iWXOOWOFRow&list=FLndfUzXCcrgdE4ecZhr79yw&index=4&feature=plpp_video'),
@@ -24,12 +24,13 @@ values
 
 insert into EN_Action (ProgramID, ActionTypeID, Name, DisplayName, Description, Enabled, CreatedDate, Points, ActionData)
 values 
-(1, 1, 'PostHypebot', 'Share this recent article about us in Hypebot with your friends.', 'In addition to your message, this will be posted on your wall: Hey, everyone check out this great article on FanFueled in Hypebot: http://bit.ly/zDwbVn).', 1, GETDATE(), 150, 'message=Hey, everyone check out this great article on FanFueled in Hypebot:;link=http://bit.ly/zDwbVn')
+(1, 1, 'PostHypebot', 'Share this recent article about us in Hypebot with your friends.', 'In addition to your message, this will be posted on your wall: Hey, everyone check out this great article on FanFueled in Hypebot: http://bit.ly/zDwbVn).', 1, GETDATE(), 150, 'description=Hey, everyone check out this great article on FanFueled in Hypebot!;link=http://bit.ly/zDwbVn')
 
 insert into EN_Action (ProgramID, ActionTypeID, Name, DisplayName, Description, Enabled, CreatedDate, Points, ActionData)
 values 
-(1, 9, 'FFPartnerPressRelease', 'Check out the press release on our newest partners, The Roxy, Ultra, Camp Bisco, and LXM Pro.', 'http://news.yahoo.com/world-renowned-roxy-major-festivals-flock-fanfueled-150059195.html', 1, GETDATE(), 150, 'http://fanfueled.wordpress.com/2012/03/15/quick-tutorial-on-the-new-fanfueled-com')
+(1, 9, 'FFPartnerPressRelease', 'Check out the press release on our newest partners, The Roxy, Ultra, Camp Bisco, and LXM Pro.', 'http://news.yahoo.com/world-renowned-roxy-major-festivals-flock-fanfueled-150059195.html', 1, GETDATE(), 50, 'http://news.yahoo.com/world-renowned-roxy-major-festivals-flock-fanfueled-150059195.html')
 
 insert into EN_Action (ProgramID, ActionTypeID, Name, DisplayName, Description, Enabled, CreatedDate, Points, ActionData)
 values 
-(1, 7, 'ReTweetFFPressRelease', 'Retweet FanFueled''s latest tweet about our new press release.', 'You will be Retweeting: https://twitter.com/#!/FanFueled/status/179719889643253760', 1, GETDATE(), 50, '179719889643253760')
+(1, 7, 'ReTweetFFPressRelease', 'Retweet FanFueled''s latest tweet about our new press release.', 'You will be Retweeting: https://twitter.com/#!/FanFueled/status/179719889643253760', 1, GETDATE(), 50, ''),
+(1, 9, 'FFTutorial', 'Check out a quick tutorial on our new homepage layout.', 'http://fanfueled.wordpress.com/2012/03/15/quick-tutorial-on-the-new-fanfueled-com/', 1, GETDATE(), 50, 'http://fanfueled.wordpress.com/2012/03/15/quick-tutorial-on-the-new-fanfueled-com')
