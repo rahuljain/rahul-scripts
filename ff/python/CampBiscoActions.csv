@@ -1,0 +1,13 @@
+Action Type,Display Name,Description (info box/hover text),Action Data Description,Action Data Link,Points,Enabled,Start Date,End Date
+like,Like Camp Bisco on Facebook.,,,https://www.facebook.com/campbiscofanpage,100,yes
+like,Like MCP Presents on Facebook.,,,https://www.facebook.com/mcppresents ,100,yes
+like,Like The Disco Biscuits on Facebook.,,,https://www.facebook.com/discobiscuits,100,yes
+Follow ,Follow Camp Bisco on Twitter.,,,campbisco,100,yes
+Follow ,Follow MCP Presents on Twitter.,,,MCP_Presents,100,yes
+Follow ,Follow The Disco Biscuits on Twitter.,,,disco_biscuits,100,yes
+post,Post your favorite Camp Bisco Story from years past to your Wall.,Tell us about your favorite Camp Bisco memory and you will receive an additional 50 points for every 'Like' your post receives. ,Post your favorite Camp Bisco Story from years past to your Wall.,,150,yes
+post,"When it comes to Camp Bisco 2012, what are you most excited for? ",Tell us what you're most looking forward to for Camp Bisco 2012 and you will receive an additional 50 points for every 'Like' your post receives. ,"With Camp Bisco 2012, what are you most excited for?",,150,yes
+refer,Refer-a-friend and you'll earn points when someone joins FanFueled Engage via your link and completes 1 action.,"Refer a friend to Camp Bisco Engage. You will be rewarded with 200 points every time someone joins via your link and completes at least one action. If your friend joins the program and then invites one of his or her friends, you will receive 100 points once they sign up. If the friend-of-a-friend gets someone to sign up, you receive another 100 points. Due to FanFueled's patented 'Share, Track, Reward' software, your influence is tracked and rewarded across multiple degrees of separation.",Post your Camp Bisco referral link to your Wall and you will earn 200 points when a friend signs and completes 1 action.,,200,yes
+tweet,Tweet the artist you're most excited to see at Camp Bisco 11 and include #CampBisco,,Tweet the artist you're most excited to see at Camp Bisco 11 and include #CampBisco,,150,yes
+watch,Watch the official Camp Bisco X Aftermath Trailer!,,,http://www.youtube.com/watch?v=PMYBuIuBjvg,200,yes
+Donate,Donate to Headcount and help register more voters! ,Headcount registers voters at concerts and make civic participation part of the live music experience.,,,20,yes
