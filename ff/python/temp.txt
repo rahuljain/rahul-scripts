@@ -1,0 +1,50 @@
+insert into EN_RewardImage (RewardID, Path, IsPrimary) values 
+'https://s3.amazonaws.com/fanfueled-engage/images/brain-trust-images/campbisco-banners/campbisco-engage-banner.jpg'
+'https://s3.amazonaws.com/fanfueled-engage/images/brain-trust-images/campbisco-banners/Campbisco_Events_Section.jpg'
+'https://s3.amazonaws.com/fanfueled-engage/images/brain-trust-images/campbisco-banners/Campbisco_Favicon.jpg'
+'https://s3.amazonaws.com/fanfueled-engage/images/brain-trust-images/campbisco-banners/Campbisco_Landing_Banner.jpg'
+'https://s3.amazonaws.com/fanfueled-engage/images/brain-trust-images/campbisco-banners/Campbisco_Mid.jpg'
+
+(231, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/DanceonStage_Large_357x230.jpg', 1),
+(231, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/DanceonStage_Med_195x150.jpg', 1),
+(232, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Shuttle_Large_357x230.jpg', 1),
+(232, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Shuttle_Med_195x150.jpg', 1),
+(233, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/VIPUpgrade_Large_357x230.jpg', 1),
+(233, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/VIPUpgrade_Med_195x150.jpg', 1),
+(234, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/MeetGreet_Large_357x230.jpg', 1),
+(234, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/MeetGreet_Med_195x150.jpg', 1),
+
+(235, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/GolfCart_Large_357x230.jpg', 1),
+(235, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/GolfCart_Med_357x230.jpg', 1),
+
+(236, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Poster_Large_357x230.jpg', 1),
+(236, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Poster_Med_195x150.jpg', 1),
+
+(237, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Hoodie_Large_357x230.jpg', 1),
+(237, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Hoodie_Med_195x150.jpg', 1),
+
+(238, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Camping_Large_357x230.jpg', 1),
+(238, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Camping_Med_195x150.jpg', 1),
+
+(239, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/TShirt_Large_357x230.jpg', 1),
+(239, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/TShirt_Med_195x150.jpg', 1),
+
+(240, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Poster_Large_357x230.jpg', 1),
+(240, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/Poster_Med_195x150.jpg', 1),
+
+(241, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/FreeDownload_Large_357x230.jpg', 1),
+(241, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/FreeDownload_Med_195x150.jpg', 1),
+
+(242, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/PhoneWallpaper_Large_357x230.jpg', 1),
+(242, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-prizes/PhoneWallpaper_Med_195x150.jpg', 1)
+
+--select * from EN_Image where ProgramID=4
+
+insert into EN_Image (ImageTypeID, ProgramID, Path)
+values
+(1, 7, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-banners/Campbisco_Mid.jpg'),
+(2, 7, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-banners/Campbisco_Landing_Banner.jpg'),
+(10, 7, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-banners/campbisco-engage-banner.jpg'),
+(11, 7, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-banners/Campbisco_Favicon.jpg'),
+(12, 7, 'https://s3.amazonaws.com/fanfueled-engage/images/campbisco-images/campbisco-banners/Campbisco_Events_Section.jpg')
+

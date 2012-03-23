@@ -1,3 +1,4 @@
+import sys
 import string
 import csv
 import math
@@ -7,7 +8,7 @@ from string import Template
 def csvReader(programID, fileName):
     insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, IsRepeatable) values "
     insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $isrepeatable),")
-    csvFileReader = csv.reader(open(fileName, 'rb'), delimiter=',')
+    csvFileReader = list(csv.reader(open(fileName, 'rb'), delimiter=','))
     
     for row in csvFileReader:
         row = [s.replace('\'', '\'\'') for s in row]
@@ -15,27 +16,26 @@ def csvReader(programID, fileName):
         actionID=0
         enabled=1
         isrepeatable=0
-        
-        if(string.lower(row[6])=='no'):
+
+        if(row[6]!=None and string.lower(row[6])=='no'):
             enabled=0
         
         actiondata=""
-        if(row[3]!=None):
+        if(row[3]!=None and row[3]!=""):
             actiondata = row[3]
-        elif(row[4]!=None):
+        elif(row[4]!=None and row[4]!=""):
             actiondata = row[4]
         
-
         if(string.lower(row[0])=='post'):
             actionID = 1
             if(row[3]!=None):
                 actiondata = "description=" + row[3]
-            elif(row[4]!=None):
-                actiondata = ";link=" + row[4]
+            if(row[4]!=None):
+                actiondata += ";link=" + row[4]
         elif(string.lower(row[0])=='like'):
             actionID = 2
         elif(string.lower(row[0])=='refer'):
-            actionID=2
+            actionID=1
             isrepeatable=1
         elif(string.lower(row[0])=='rsvp'):
             actionID = 3
@@ -56,10 +56,16 @@ def csvReader(programID, fileName):
             isrepeatable=1
         elif(string.lower(row[0])=='donate'):
             actionID = 11
+            isrepeatable=1
         
         if(actionID>0 and actionID<12):
             insertStatement += insertValue.substitute(programID=programID, actionTypeID=actionID, displayName=row[1], description=row[2], enabled=enabled, points=row[5], actionData=actiondata, isrepeatable=isrepeatable)
             
     return insertStatement
 
-print csvReader(7, 'CampBiscoActions.csv')
+programID = sys.argv[1]
+fileName = sys.argv[2]
+
+print csvReader(programID, fileName)
+
+## Example usage:
