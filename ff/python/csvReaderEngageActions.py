@@ -5,7 +5,9 @@ import math
 from string import Template
 
 
-def csvReader(programID, fileName):
+def csvReader(programID, programName, fileName):
+    programNameURL = "https://" + (string.lower(programName)).replace(' ','') + ".fanfueledengage.com"
+    print programNameURL
     insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, IsRepeatable) values "
     insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $isrepeatable),")
     csvFileReader = list(csv.reader(open(fileName, 'rb'), delimiter=','))
@@ -28,10 +30,15 @@ def csvReader(programID, fileName):
         
         if(string.lower(row[0])=='post'):
             actionID = 1
-            if(row[3]!=None):
-                actiondata = "description=" + row[3]
-            if(row[4]!=None):
-                actiondata += ";link=" + row[4]
+            if(row[3]!=None and len(row[3])>0):
+                actiondata = "description=" + row[3] + ";"
+            if(row[4]!=None and len(row[4])>0):
+                actiondata += "link=" + row[4]
+                print "link was not empty"
+            else:
+                actiondata += "link=" + programNameURL
+                print "link was null or empty"
+            actiondata += ";name=" + programName
         elif(string.lower(row[0])=='like'):
             actionID = 2
         elif(string.lower(row[0])=='refer'):
@@ -64,8 +71,11 @@ def csvReader(programID, fileName):
     return insertStatement
 
 programID = sys.argv[1]
-fileName = sys.argv[2]
+programName = sys.argv[2]
+fileName = sys.argv[3]
 
-print csvReader(programID, fileName)
+print csvReader(programID, programName, fileName)
 
+
+## to modify: caption=foobar;link=programName.fanfueledengage.com;name=programName
 ## Example usage:
