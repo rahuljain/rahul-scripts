@@ -28,8 +28,10 @@ def csvReader(programID, programName, fileName):
         elif(row[4]!=None and row[4]!=""):
             actiondata = row[4]
         
-        if(string.lower(row[0])=='post'):
+        if(string.lower(row[0])=='post' or string.lower(row[0])=='refer'):
             actionID = 1
+            if(string.lower(row[0])=='refer'):
+                isrepeatable=1
             if(row[3]!=None and len(row[3])>0):
                 actiondata = "description=" + row[3] + ";"
             if(row[4]!=None and len(row[4])>0):
@@ -41,9 +43,6 @@ def csvReader(programID, programName, fileName):
             actiondata += ";name=" + programName
         elif(string.lower(row[0])=='like'):
             actionID = 2
-        elif(string.lower(row[0])=='refer'):
-            actionID=1
-            isrepeatable=1
         elif(string.lower(row[0])=='rsvp'):
             actionID = 3
         elif(string.lower(row[0])=='join'):
