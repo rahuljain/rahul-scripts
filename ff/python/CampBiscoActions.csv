@@ -1,13 +1,22 @@
 Action Type,Display Name,Description (info box/hover text),Action Data Description,Action Data Link,Points,Enabled,Start Date,End Date
-like,Like Camp Bisco on Facebook.,,,https://www.facebook.com/campbiscofanpage,100,yes
-like,Like MCP Presents on Facebook.,,,https://www.facebook.com/mcppresents ,100,yes
-like,Like The Disco Biscuits on Facebook.,,,https://www.facebook.com/discobiscuits,100,yes
-Follow ,Follow Camp Bisco on Twitter.,,,campbisco,100,yes
-Follow ,Follow MCP Presents on Twitter.,,,MCP_Presents,100,yes
-Follow ,Follow The Disco Biscuits on Twitter.,,,disco_biscuits,100,yes
-post,Post your favorite Camp Bisco Story from years past to your Wall.,Tell us about your favorite Camp Bisco memory and you will receive an additional 50 points for every 'Like' your post receives. ,Post your favorite Camp Bisco Story from years past to your Wall.,,150,yes
-post,"When it comes to Camp Bisco 2012, what are you most excited for? ",Tell us what you're most looking forward to for Camp Bisco 2012 and you will receive an additional 50 points for every 'Like' your post receives. ,"With Camp Bisco 2012, what are you most excited for?",,150,yes
-refer,Refer-a-friend and you'll earn points when someone joins FanFueled Engage via your link and completes 1 action.,"Refer a friend to Camp Bisco Engage. You will be rewarded with 200 points every time someone joins via your link and completes at least one action. If your friend joins the program and then invites one of his or her friends, you will receive 100 points once they sign up. If the friend-of-a-friend gets someone to sign up, you receive another 100 points. Due to FanFueled's patented 'Share, Track, Reward' software, your influence is tracked and rewarded across multiple degrees of separation.",Post your Camp Bisco referral link to your Wall and you will earn 200 points when a friend signs and completes 1 action.,,200,yes
-tweet,Tweet the artist you're most excited to see at Camp Bisco 11 and include #CampBisco,,Tweet the artist you're most excited to see at Camp Bisco 11 and include #CampBisco,,150,yes
-watch,Watch the official Camp Bisco X Aftermath Trailer!,,,http://www.youtube.com/watch?v=PMYBuIuBjvg,200,yes
-Donate,Donate to Headcount and help register more voters! ,Headcount registers voters at concerts and make civic participation part of the live music experience.,,,20,yes
+Refer-a-Friend via Twitter,Refer-a-friend and you will earn 5% of your referral's total points.,"Refer a friend to Roxy's Engage Platform by posting this link to your Twitter feed. You will earn 5% of all of your referral's total points. If your referrals get their friends to sign up, you will receive 5% of their total points, too. That's because FanFueled's patented 'Share, Track, Reward' software tracks your influence across multiple degrees of separation and rewards you for it.",Sign up for Camp Bisco Engage for a chance to win awesome prizes and experiences. ,,5,Y,4/6/2012 12:01:00
+Post,Share the Camp Bisco lineup with your friends.,Post a link to the Camp Bisco lineup to your Wall and you will receive an additional 50 points for every 'Like' your post receives. ,Check out Camp Bisco's amazing lineup.,http://www.campbisco.net/post.php?id=267,150,Y,4/9/2012 12:01:00,4/10/2012 12:01:00
+Watch,Watch this video of LCD Soundsystem performing at Camp Bisco!,,,http://www.youtube.com/watch?v=HylxgaUN1wg,200,Y,4/9/2012 12:01:00,4/10/2012 12:01:00
+Like,Like DrFameus on Facebook.,,,https://www.facebook.com/pages/DrFameus,100,Y,4/10/2012 12:01:00,4/11/2012 12:01:00
+Follow,Follow Archnemesis on Twitter.,,,archnemesis1,100,Y,4/10/2012 12:01:00,4/11/2012 12:01:00
+Tweet,Tweet this video of Shpongle performing at Camp Bisco 2011! ,,Tweet this video of Shpongle performing at Camp Bisco 2011! ,http://www.youtube.com/watch?v=YB6ph2zTd6c,150,Y,4/11/2012 12:01:00,4/12/2012 12:01:00
+Watch,Watch this video of the Disco Biscuits performing at Camp Bisco 2011.,,,http://www.youtube.com/watch?v=stZQu5wf85o,200,Y,4/11/2012 12:01:00,4/12/2012 12:01:00
+Like,Like Zoogma on Facebook.,,,https://www.facebook.com/pages/zoogmaband,100,Y,4/12/2012 12:01:00,4/13/2012 12:01:00
+Tweet,Tweet this picture of @Wiz Khalifa performing at Camp Bisco 2011.,,Tweet this picture of @Wiz Khalifa performing at Camp Bisco 2011.,http://www.flickr.com/photos/altuwa/5924966581/,150,Y,4/12/2012 12:01:00,4/13/2012 12:01:00
+Post,"Other than the performing acts, what is your favorite part about Camp Bisco?",Tell your Facebook friends about your favorite part of Camp Bisco and you will receive an additional 50 points for every 'Like' your post receives.,"Other than the performing acts, what is your favorite part about Camp Bisco?",,150,Y,4/13/2012 12:01:00,4/16/2012 12:01:00
+Like ,Like Freekbass on Facebook.,,,https://www.facebook.com/pages/freekbassmusic,100,Y,4/13/2012 12:01:00,4/16/2012 12:01:00
+Follow,Follow Simian Mobile Disco on Twitter,,,smdisco,100,Y,4/16/2012 12:01:00,4/17/2012 12:01:00
+Watch,Watch this interview with Marc Brownstein talking about all things Disco Biscuits.,,,http://www.youtube.com/watch?v=CliluNRqQAU,200,Y,4/16/2012 12:01:00,4/17/2012 12:01:00
+Visit,Check out Camp Bisco's photo gallery.,,,http://www.campbisco.net/photo-gallery.php,50,Y,4/17/2012 12:01:00,4/18/2012 12:01:00
+Watch,Watch this video of Skrillex at Camp Bisco 2011,,,http://www.youtube.com/watch?v=oXKEgdimVuU,200,Y,4/17/2012 12:01:00,4/18/2012 12:01:00
+Watch,Watch the offical Camp Bisco X Recap and Camp Bisco 11 preview.,,,http://www.youtube.com/watch?v=YLCe_L37lRI&feature=fvst,200,Y,4/18/2012 12:01:00,4/19/2012 12:01:00
+Post,Share information on our Long Distance Shuttles with your friends.,Post information on Camp Bisco's long distance shuttles and you will receive an additional 50 points for every 'Like' your post receives.,Check out these Long Distance Shuttles for Camp Bisco.,http://www.ticketfly.com/purchase/event/84965?utm_medium=bks,150,Y,4/18/2012 12:01:00,4/19/2012 12:01:00
+Post,What is your favorite Disco Biscuits song?,Post your favorite Disco Biscuits song and you will receive an additional 50 points for every 'Like' your post receives.,Tell us about your favorite Disco Biscuits song.,,150,Y,4/19/2012 12:01:00,4/20/2012 12:01:00
+Visit,Check out all of the events at Indian Lookout Country Club.,,,http://www.jambase.com/Shows/Shows.aspx?venueID=10118,50,Y,4/19/2012 12:01:00,4/20/2012 12:01:00
+Follow,Follow CID Entertainment on Twitter.,,,cidentertainmnt,100,Y,4/20/2012 12:01:00,4/23/2012 12:01:00
+Like,Like CID Entertainment on Facebook.,,,https://www.facebook.com/pages/cidentertainmentevents,100,Y,4/20/2012 12:01:00,4/23/2012 12:01:00

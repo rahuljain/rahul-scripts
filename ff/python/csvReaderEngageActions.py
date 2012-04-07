@@ -6,10 +6,10 @@ from string import Template
 
 
 def csvReader(programID, programName, fileName):
-    programNameURL = "https://" + (string.lower(programName)).replace(' ','') + ".fanfueledengage.com"
+    programNameURL = "https://fanfueledengage.com/" + (string.lower(programName)).replace(' ','')
     print programNameURL
-    insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, IsRepeatable) values "
-    insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $isrepeatable),")
+    insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, IsRepeatable, StartDate, EndDate) values "
+    insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $isrepeatable, $startDate, $endDate),")
     csvFileReader = list(csv.reader(open(fileName, 'rb'), delimiter=','))
     
     for row in csvFileReader:
@@ -18,8 +18,10 @@ def csvReader(programID, programName, fileName):
         actionID=0
         enabled=1
         isrepeatable=0
+        StartDate=''
+        EndDate=''
 
-        if(row[6]!=None and string.lower(row[6])=='no'):
+        if(row[6]!=None and (string.lower(row[6])=='no' or string.lower(row[6])=='n')):
             enabled=0
         
         actiondata=""
@@ -27,10 +29,19 @@ def csvReader(programID, programName, fileName):
             actiondata = row[3]
         elif(row[4]!=None and row[4]!=""):
             actiondata = row[4]
-        
-        if(string.lower(row[0])=='post' or string.lower(row[0])=='refer'):
+
+        if(len(row) > 7):
+            StartDate = "'" + row[7] + "'"
+        else:
+            StartDate = 'NULL'
+        if(len(row) > 8):
+            EndDate = "'" + row[8] + "'"
+        else:
+            EndDate = 'NULL'
+
+        if(string.lower(row[0])=='post' or string.lower(row[0])=='refer-a-friend via facebook'):
             actionID = 1
-            if(string.lower(row[0])=='refer'):
+            if(string.lower(row[0])=='refer-a-friend via facebook'):
                 isrepeatable=1
             if(row[3]!=None and len(row[3])>0):
                 actiondata = "description=" + row[3] + ";"
@@ -51,6 +62,9 @@ def csvReader(programID, programName, fileName):
             actionID = 5
         elif(string.lower(row[0])=='tweet'):
             actionID = 6
+        elif(string.lower(row[0])=='refer-a-friend via twitter'):
+            actionID=6
+            isrepeatable=1
         elif(string.lower(row[0])=='retweet'):
             actionID = 7
         elif(string.lower(row[0])=='watch'):
@@ -65,7 +79,7 @@ def csvReader(programID, programName, fileName):
             isrepeatable=1
         
         if(actionID>0 and actionID<12):
-            insertStatement += insertValue.substitute(programID=programID, actionTypeID=actionID, displayName=row[1], description=row[2], enabled=enabled, points=row[5], actionData=actiondata, isrepeatable=isrepeatable)
+            insertStatement += insertValue.substitute(programID=programID, actionTypeID=actionID, displayName=row[1], description=row[2], enabled=enabled, points=row[5], actionData=actiondata, isrepeatable=isrepeatable, startDate=StartDate, endDate=EndDate)
             
     return insertStatement
 

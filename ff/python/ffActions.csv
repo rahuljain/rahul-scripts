@@ -1,5 +1,6 @@
 Action Type,Display Name,Description (info box/hover text),Action Data Description,Action Data Link,Points,Enabled,Start Date,End Date
-retweet,Retweet this post about LXM 949 tickets!,,,183277473121837056,50,yes
-rsvp,RSVP for the Just for Laughs Callback Auditions,The Just for Laughs Call Back Auditions are being held at The Comedy Bar.,,http://www.facebook.com/events/289427651128138/,100,yes
-Like,Like the Wrigleyville Rooftops on Facebook.,,,http://www.facebook.com/pages/Wrigleyville-Rooftops/61299456265,100,yes
-follow,"Follow one of our latest ticketing partners, Campus Night Out, on Twitter.",,,campusnightout,100,yes
+Post,Tell your friends about our brand new Roxy Engage Platform. ,,"Check out The Roxy's Engage platform, the best place to win great prizes at one of the country's most iconic venues!",https://roxy.fanfueledengage.com/,150,yes
+follow,Follow cartoonist Bill Plympton on Twitter.,We're doing ticketing for a 'Special Evening with Bill Plympton' at the Museum of Modern Art in NYC. Get your tickets today at FanFueled.com.,,plymptoons,100,yes
+Post,Post the Camp Bisco Engage Platform to your Wall,"Post the Camp Bisco Engage Platform, and you will receive an additional 50 points for every 'Like' your post receives.",Check out the Camp Bisco Engage Platform!,https://campbisco.fanfueledengage.com/Home,150,yes
+retweet,Retweet our post about FanFueled's new custom ticketing fields!,,,184692878860238850,50,yes
+post,Tell us what current FanFueled event you're most excited about!,Tell us about your favorite event on the site and you will receive an additional 50 points for every 'Like' your post receives.,What FanFueled event are you most excited for!?,,150,yes
