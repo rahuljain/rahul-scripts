@@ -1,4 +1,23 @@
-Retweet,Retweet @NicAdler's message about the new painting on the side of the Roxy,,,186629706798473216,50,yes
-Post,"Share the news about the @LAVeganBeerFest, happening at the Roxy","Share the link to the LA Vegan Beer & Food Fest, and you will receive an additional 50 points for every 'Like' your post receives.",Check out the LA Vegan Beer & Food Fest!,http://www.quarrygirl.com/post/20296431058/la-vegan-beer-food-fest,150,yes
-Watch,"Watch this video for Madeon, coming to the Roxy on April 17",,,http://www.youtube.com/watch?feature=player_embedded&v=IxPbgnO81sQ,200,yes
-Post,Share this picture from the Roxy's Tumblr of John and Yoko's wedding in 1969.,Share this photo and you will receive an additional 50 points for every 'Like' your post receives.,Check out this photo from John and Yoko's wedding!,http://theroxy.tumblr.com/post/19633567320/today-in-music-history-john-lennon-yoko-ono-wed,150,yes
+Action Type,Display Name,Description (info box/hover text),Action Data Description,Action Data Link,Points,Enabled,Start Date,End Date,Order
+Refer-a-Friend via Twitter,Refer-a-friend and you will earn 5% of your referral's total points.,"Refer a friend to Roxy's Engage Platform by posting this link to your Twitter feed. You will earn 5% of all of your referral's total points. If your referrals get their friends to sign up, you will receive 5% of their total points, too. That's because FanFueled's patented 'Share, Track, Reward' software tracks your influence across multiple degrees of separation and rewards you for it.",Sign up for Roxy Engage for a chance to win awesome prizes and experiences. ,,5,Y,4/6/2012,,2
+Retweet,Retweet the Roxy's tweet about the @LAVeganBeerFest,,,A 187615904606068000,50,Y,4/6/2012,4/9/2012,3
+Visit,Visit the Rock Club and learn about Gene Simmons' benefit at The Roxy.,,,http://www.therockclub.net/,50,Y,4/9/2012,4/10/2012,5
+Follow,Follow the Sunset Strip Music Festival on Twitter.,,,ssmf,100,Y,4/9/2012,4/10/2012,6
+Post,Jessie J rocked the house last night. Post your favorite song of hers to your Wall.,Post your answer to your Wall and you will receive an additional 50 points for every 'Like' your post receives.,Jessie J played at The Roxy last night! My favorite song of hers is…,,150,Y,4/10/2012,4/11/2012,7
+Visit,Check out the Roxy Blog for a free download from the Winchester Rebels.,,,http://theroxyonsunset.com/?p=7917,50,Y,4/10/2012,4/11/2012,8
+Post,Share Roxy's SoundCloud page with your friends.,Post the SoundCloud page to your Wall and you will receive an additional 50 points for every 'Like' your post receives.,Check out these great tracks on Roxy's SoundCloud page!,http://soundcloud.com/the-roxy-theatre,150,,4/11/2012,4/12/2012 12:01:00,9
+Retweet,Retweet the Roxy's latest tweet about the Pharcyde show on 5/23,,,A 187691157906669000,50,Y,4/11/2012,4/12/2012,10
+Donate,Donate to the Rock for Vets music rehabilitation program.,The ‘Rock for Vets’ Music Therapy Program provides Veteran’s a chance to learn a musical instrument and learn to play or sing as part of a musical group. There was a benefit for this awesome foundation on April 12th.,,,20,Y,4/12/2012,4/13/2012,11
+Post,Share The Roxy's flickr page with your friends.,,Check out some of these awesome pictures on Roxy's flickr page.,http://www.flickr.com/photos/TheRoxyBlog,150,Y,4/12/2012,4/13/2012,12
+Tweet,Tweet out the flier for The Bolts show to your followers.,,Check out this awesome flier for the 4/28 Bolts show at The Roxy.,http://theroxyonsunset.com/?portfolio=7896,150,Y,4/13/2012,4/16/2012,13
+Watch,Watch this video from The Roxy's YouTube page of Lionel Ritchie and Kenny Rogers.,,,http://www.youtube.com/watch?v=MSQ7J6LGE3o&feature=plcp&context=C4c9bccdVDvjVQa1PpcFMoid1Lox_L14Z6HCv6qeBPu-MKOXOmGIo%3D,200,Y,4/13/2012,4/16/2012,14
+Visit,Check out The Roxy's Google+ page and add them to circles.,,,https://plus.google.com/110064325305911192687/posts,50,Y,4/16/2012,4/17/2012,15
+Follow,Follow the Roxy Lounge on Twitter.,,,theroxylot,100,Y,4/16/2012,4/17/2012,16
+Visit,Check out The Roxy Lounge's awesome blog.,,,http://roxyaz.com/page.cfm?id=982,50,Y,4/17/2012,4/18/2012,17
+Retweet,Retweet @NicAdler's message about the new painting on the side of The Roxy.,,,A 186629706798473000,50,Y,4/17/2012,4/18/2012,18
+Post,Share the flier for the 4/25 Enter Shikari show with your friends.,,Check out this fantastic flier for the 4/25 Enter Shikari show at The Roxy.,http://theroxyonsunset.com/?portfolio=7891,150,Y,4/18/2012,4/19/2012,19
+Tweet,Tweet about Mowgli's CD release party at The Roxy.,,Check out info on Mowgli's CD release party at The Roxy.,http://theroxyonsunset.com/?page_id=2473&month=may&yr=2012,150,Y,4/18/2012,4/19/2012,20
+Like,Like the Roxy Lounge on Facebook.,,,http://www.facebook.com/theroxyLOT,100,Y,4/19/2012,4/20/2012,21
+Watch,"Listen to this song from our May 4th headliner, Devin the Dude. ",,,http://www.youtube.com/watch?v=2T1jdreS6ko,200,Y,4/19/2012,4/20/2012,22
+Visit,Check out The Roxy's MySpace page.,Check out The Roxy's calendar and receive an additional 50 points for every 'Like' your post receives.,,http://www.myspace.com/TheRoxyOnSunset,50,Y,4/20/2012,4/23/2012,23
+Post,Share The Roxy's May calendar with your friends.,,Check out The Roxy's May calendar.,http://theroxyonsunset.com/?page_id=2473&month=may&yr=2012,150,Y,4/20/2012,4/23/2012,24
