@@ -8,6 +8,8 @@ from string import Template
 def csvReader(programID, programName, fileName):
     programNameURL = "https://fanfueledengage.com/" + (string.lower(programName)).replace(' ','')
     print programNameURL
+    if(programName==""):
+        programName = "FanFueled Engage"
     insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, HasReferralPoints, IsRepeatable, StartDate, EndDate, OrderIndex) values "
     insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $hasreferralpoints, $isrepeatable, $startDate, $endDate, $orderindex),")
     csvFileReader = list(csv.reader(open(fileName, 'rb'), delimiter=','))
@@ -32,9 +34,9 @@ def csvReader(programID, programName, fileName):
         elif(row[4]!=None and string.strip(row[4])!=""):
             actiondata = row[4]
 
-        if(len(row) > 7 and string.strip(row[7]!=""):
+        if(len(row) > 7 and string.strip(row[7]!="")):
             StartDate = "'" + row[7] + "'"
-        if(len(row) > 8 and string.strip(row[8]!=""):
+        if(len(row) > 8 and string.strip(row[8]!="")):
             EndDate = "'" + row[8] + "'"
             orderIndex=1
 
