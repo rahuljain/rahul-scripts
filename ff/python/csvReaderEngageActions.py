@@ -13,7 +13,8 @@ def csvReader(programID, programName, fileName):
     insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, HasReferralPoints, IsRepeatable, StartDate, EndDate, OrderIndex) values "
     insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $hasreferralpoints, $isrepeatable, $startDate, $endDate, $orderindex),")
     csvFileReader = list(csv.reader(open(fileName, 'rb'), delimiter=','))
-    
+
+    count=0
     for row in csvFileReader:
         row = [s.replace('\'', '\'\'') for s in row]
         
@@ -34,19 +35,19 @@ def csvReader(programID, programName, fileName):
         elif(row[4]!=None and string.strip(row[4])!=""):
             actiondata = row[4]
 
-        if(len(row) > 7 and string.strip(row[7]!="")):
+        if(len(row) > 7 and string.strip(row[7])!=""):
             StartDate = "'" + row[7] + "'"
-        if(len(row) > 8 and string.strip(row[8]!="")):
+        if(len(row) > 8 and string.strip(row[8])!=""):
             EndDate = "'" + row[8] + "'"
             orderIndex=1
 
         if(len(row) > 9):
             orderIndex = row[9]
 
-        if(string.lower(row[0])=='post' or string.lower(row[0])=='refer-a-friend via facebook'):
+        if(string.lower(row[0])=='post' or string.lower(row[0])=='facebook referral' or string.lower(row[0])=='refer-a-friend via facebook'):
             actionID = 1
             hasReferralPoints=1
-            if(string.lower(row[0])=='refer-a-friend via facebook'):
+            if(string.lower(row[0])=='facebook referral' or string.lower(row[0])=='refer-a-friend via facebook'):
                 isrepeatable=1
                 hasReferralPoints=0
                 orderIndex=2
@@ -69,7 +70,7 @@ def csvReader(programID, programName, fileName):
             actionID = 5
         elif(string.lower(row[0])=='tweet'):
             actionID = 6
-        elif(string.lower(row[0])=='refer-a-friend via twitter'):
+        elif(string.lower(row[0])=='twitter referral' or string.lower(row[0])=='refer-a-friend via twitter'):
             actionID=6
             isrepeatable=1
             orderIndex=3
@@ -77,7 +78,7 @@ def csvReader(programID, programName, fileName):
             actionID = 7
         elif(string.lower(row[0])=='watch'):
             actionID = 8
-        elif(string.lower(row[0])=='link'):
+        elif(string.lower(row[0])=='link' or string.lower(row[0])=='visit'):
             actionID = 9
         elif(string.lower(row[0])=='buy'):
             actionID = 10
@@ -88,7 +89,9 @@ def csvReader(programID, programName, fileName):
         
         if(actionID>0 and actionID<12):
             insertStatement += insertValue.substitute(programID=programID, actionTypeID=actionID, displayName=row[1], description=row[2], enabled=enabled, points=row[5], actionData=actiondata, hasreferralpoints=hasReferralPoints, isrepeatable=isrepeatable, startDate=StartDate, endDate=EndDate, orderindex=orderIndex)
-            
+            count += 1
+    
+    print "Total number of actions added = {0}".format(count)
     return insertStatement
 
 programID = sys.argv[1]
