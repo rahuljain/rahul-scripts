@@ -10,13 +10,14 @@ def csvReader(programID, programName, fileName):
     print programNameURL
     if(programName==""):
         programName = "FanFueled Engage"
-    insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, ActionData, HasReferralPoints, IsRepeatable, StartDate, EndDate, OrderIndex) values "
-    insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, '$actionData', $hasreferralpoints, $isrepeatable, $startDate, $endDate, $orderindex),")
+    insertStatement = "insert into EN_Action (ProgramID, ActionTypeID, DisplayName, Description, Enabled, CreatedDate, Points, PointsDisplay, ActionData, HasReferralPoints, IsRepeatable, StartDate, EndDate, OrderIndex) values "
+    insertValue = Template("\n($programID, $actionTypeID, '$displayName', '$description', $enabled, GETDATE(), $points, $pointsDisplay, '$actionData', $hasreferralpoints, $isrepeatable, $startDate, $endDate, $orderindex),")
     csvFileReader = list(csv.reader(open(fileName, 'rb'), delimiter=','))
 
     count=0
     for row in csvFileReader:
         row = [s.replace('\'', '\'\'') for s in row]
+        row = [s.strip() for s in row]
         
         actionID=0
         enabled=1
@@ -25,6 +26,8 @@ def csvReader(programID, programName, fileName):
         EndDate='NULL'
         hasReferralPoints = 0
         orderIndex = 'NULL'
+        points=row[5]
+        pointsDisplay = 'NULL'
 
         if(row[6]!=None and (string.lower(row[6])=='no' or string.lower(row[6])=='n')):
             enabled=0
@@ -51,6 +54,8 @@ def csvReader(programID, programName, fileName):
                 isrepeatable=1
                 hasReferralPoints=0
                 orderIndex=2
+                pointsDisplay=5
+                points=0
             if(row[3]!=None and len(row[3])>0):
                 actiondata = "description=" + row[3] + ";"
             if(row[4]!=None and len(row[4])>0):
@@ -74,6 +79,9 @@ def csvReader(programID, programName, fileName):
             actionID=6
             isrepeatable=1
             orderIndex=3
+            actiondata += " " + programNameURL
+            pointsDisplay=5
+            points=0
         elif(string.lower(row[0])=='retweet'):
             actionID = 7
         elif(string.lower(row[0])=='watch'):
@@ -88,7 +96,7 @@ def csvReader(programID, programName, fileName):
             isrepeatable=1
         
         if(actionID>0 and actionID<12):
-            insertStatement += insertValue.substitute(programID=programID, actionTypeID=actionID, displayName=row[1], description=row[2], enabled=enabled, points=row[5], actionData=actiondata, hasreferralpoints=hasReferralPoints, isrepeatable=isrepeatable, startDate=StartDate, endDate=EndDate, orderindex=orderIndex)
+            insertStatement += insertValue.substitute(programID=programID, actionTypeID=actionID, displayName=row[1], description=row[2], enabled=enabled, points=points, pointsDisplay=pointsDisplay, actionData=actiondata, hasreferralpoints=hasReferralPoints, isrepeatable=isrepeatable, startDate=StartDate, endDate=EndDate, orderindex=orderIndex)
             count += 1
     
     print "Total number of actions added = {0}".format(count)
