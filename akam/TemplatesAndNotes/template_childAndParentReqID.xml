@@ -1,0 +1,12 @@
+<match:request.type result="true" value="CLIENT_REQ">
+  <edgeservices:modify-outgoing-request.add-header>
+   <name>X-Akamai-Edge-RequestID</name>
+   <value>%(AK_REQUEST_ID)</value>
+  </edgeservices:modify-outgoing-request.add-header>
+</match:request.type>
+<match:forward-server.type value="CUSTOMER_ORIGIN">
+  <edgeservices:modify-outgoing-request.add-header>
+   <name>X-Akamai-Parent-RequestID</name>
+   <value>%(AK_REQUEST_ID)</value>
+ </edgeservices:modify-outgoing-request.add-header>
+</match:forward-server.type>

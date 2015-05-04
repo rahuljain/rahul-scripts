@@ -1,0 +1,11 @@
+<security:allow-delete>on</security:allow-delete>
+<security:allow-put>on</security:allow-put>
+<security:allow-patch>on</security:allow-patch>
+<security:allow-post>on</security:allow-post>
+<edgeservices:allow-post-without-content-length>off</edgeservices:allow-post-without-content-length>
+<match:request.method value="HTTP_DELETE PATCH OPTIONS">
+  <edgeservices:webdav.status>on</edgeservices:webdav.status>
+</match:request.method>
+<match:request.method value="HEAD GET POST PUT HTTP_DELETE PATCH OPTIONS">
+  <forward:cache-parent.enable-all-methods>on</forward:cache-parent.enable-all-methods>
+</match:request.method>

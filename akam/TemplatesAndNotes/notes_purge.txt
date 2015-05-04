@@ -1,0 +1,351 @@
+nsh --no-query 80.67.64.116 translate http://www.bestbuy.com/blackfriday
+
+HTTP/1.0 200 OK
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Length: 0
+X-Ak-Translate: 215959 /L/1105/215959/1d6h/p-browse-w2a.www.bestbuy.com/blackfriday
+X-Akamai-CacheID: ___DEVICE_SIZE=l
+X-Akamai-Host: p-browse-w2a.www.bestbuy.com
+X-Akamai-Key: CEEA487838616670
+Date: Tue, 25 Nov 2014 19:50:44 GMT
+Connection: close
+Set-Cookie: bby_rdp=l; expires=Wed, 26-Nov-2014 19:50:44 GMT; path=/; domain=.bestbuy.com
+
+
+=================
+
+
+nsh --no-query 80.67.64.116 translate http://www.bestbuy.com/blackfriday&origin=p-browse-e
+
+[rajain@lsg-gss1 ~]$ HTTP/1.0 200 OK
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Length: 0
+X-Ak-Translate: 215959 /L/1105/215959/1d6h/p-browse-w2a.www.bestbuy.com/blackfriday
+X-Akamai-CacheID: ___DEVICE_SIZE=l
+X-Akamai-Host: p-browse-w2a.www.bestbuy.com
+X-Akamai-Key: CEEA487838616670
+Date: Tue, 25 Nov 2014 19:51:16 GMT
+Connection: close
+Set-Cookie: bby_rdp=l; expires=Wed, 26-Nov-2014 19:51:16 GMT; path=/; domain=.bestbuy.com
+
+
+
+==================================
+
+
+
+[rajain@lsg-gss1 ~]$ tracepurge.pl -tips 
+
+
+Required Parameters:
+  -[i|r]: [i] IP Adress of Akamai Edge Server  or [r] Akamai Region Number (-e enables ESSL region)
+  -s: Search Pattern (restccu error id / session request id / portal username / email address / url)
+  -d: Date Range mm/dd/yyyy[hh:mm-mm/dd/yyyy/hh:mm]; also supports 'yy'; also see [-a]
+  -o: Output File to write the trace output
+
+Optional Parameters
+ -e: Enables ESSL Search on region no (-r option is required)
+ -h: displays usage information
+ -t: displays command line tips
+ -x: performs and eXtended trace, providing additional details while trace a purge (slower)
+ -a: enables adaptive search. Narrows the search to a 3 hour window, based on the original purge request time
+ -l: debug log filename. If a filename is provided, the debug output will be written to the file as the script executes
+  --
+
+
+
+1. Trace a purge request to a single IP (Edgesuite) : basic
+  tracepurge.pl -i 80.67.64.114 -s nandha.gif -o outputfile -d 11/20/2006
+
+2. Trace a purge request to a region (ESSL) : basic===
+  tracepurge.pl '-r 5937 -e -s 31487136 -o outputfile -d 11/20/2006/12:00-11/20/2006/24:00
+
+3. Trace a purge request: enable Adaptive search
+  tracepurge.pl -i 80.67.64.114 -s 31487136 -o outputfile -d 11/20/2006  -a
+
+4. Trace a purge request: Extended search
+  tracepurge.pl -i 80.67.64.114 -s 31487136 -o outputfile -d 11/20/2006  -x
+  
+5. Debug/Troubleshoot a Trace purge request (use it to report issues with script) 
+  tracepurge.pl -i 80.67.64.114 -s 31487136 -o outputfile -d 11/20/2006  -l mydebugfile.log
+  
+
+
+Search Options: [-s]:
+Userid, Email address, URL/filename/CPCode, session-request-id, CCU Error ID
+
+
+
+===========
+
+
+
+
+Here I tried to purge the URL directly on ESN and the purge was a success.
+ 
+165.254.92.135 /usr/local/akamai> purge http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&origin=p-browse-e1a
+HTTP/1.0 200 OK
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Length: 0
+Date: Tue, 12 Aug 2014 18:41:49 GMT
+Connection: close
+Set-Cookie: bby_rdp=l; expires=Wed, 13-Aug-2014 18:41:49 GMT; path=/; domain=.bestbuy.com
+X-Akamai-Staging: EdgeSuite
+
+165.254.92.135 /usr/local/akamai> purge http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&origin=p-browse-e1a
+HTTP/1.0 404 Not Found
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Length: 0
+Expires: Tue, 12 Aug 2014 18:41:57 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Tue, 12 Aug 2014 18:41:57 GMT
+Connection: close
+X-Akamai-Staging: EdgeSuite
+
+
+===========
+
+
+165.254.92.139 /usr/local/akamai> translate http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211    à NORMAL REQUEST
+HTTP/1.0 200 OK
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Length: 0
+X-Ak-Translate: 215956 /L/1105/215956/1d6h/p-browse-e1a.www.bestbuy.com/edge/pdp/pdp/basepage
+X-Akamai-CacheID: skuId=6389211___DEVICE_SIZE=l
+X-Akamai-Host: p-browse-e1a.www.bestbuy.com
+X-Akamai-Key: F812FA5576D8D9D5
+Date: Tue, 12 Aug 2014 16:05:13 GMT
+Connection: close
+Set-Cookie: bby_rdp=l; expires=Wed, 13-Aug-2014 16:05:13 GMT; path=/; domain=.bestbuy.com
+X-Akamai-Staging: EdgeSuite
+ 
+165.254.92.139 /usr/local/akamai> translate http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&origin=p-browse-e1a  à PURGE REQUEST
+HTTP/1.0 200 OK
+Server: AkamaiGHost
+Mime-Version: 1.0
+Content-Length: 0
+X-Ak-Translate: 215956 /L/1105/215956/1d6h/p-browse-e1a.www.bestbuy.com/edge/pdp/pdp/basepage
+X-Akamai-CacheID: skuId=6389211___DEVICE_SIZE=l
+X-Akamai-Host: p-browse-e1a.www.bestbuy.com
+X-Akamai-Key: F812FA5576D8D9D5
+Date: Tue, 12 Aug 2014 16:05:28 GMT
+Connection: close
+Set-Cookie: bby_rdp=l; expires=Wed, 13-Aug-2014 16:05:28 GMT; path=/; domain=.bestbuy.com
+X-Akamai-Staging: EdgeSuite
+
+
+========
+
+
+
+
+
+Andrew,
+I pulled some purge logs and this is what I see for two purge requests I made:
+
+1. Without Device Size:
+<== 
+ req-id:  17F1407859370607 
+ server-ip:     80.67.80.40 
+ received-at: Tue Aug 12 16:02:50 UTC 2014 
+    PURGEAPI 4.13
+    name = akamai
+    network = FF
+    options = action=remove
+    options = domain=staging
+    options = override=akamai
+    options = email-notification=rajain@akamai.com
+    uri = http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a
+    Checking option:action=remove
+    Val for option is: [remove]
+    Checking option:domain=staging
+    Val for option is: [staging]
+    Checking option:override=akamai
+    Val for option is: [akamai]
+    User [akamai] over-ride to [akamai]
+    Checking option:email-notification=rajain@akamai.com
+    Val for option is: [rajain@akamai.com]
+    Pattern: [^([\w_][.\w_\-]*@[.\w_\-]+)([,\s][\s]*([\w_][.\w_\-]*@[.\w_\-]+))*$]
+    Setting email to rajain@akamai.com
+    Setting email from nobody@akamai.com to rajain@akamai.com
+    Calling doPurge
+    psrsend started--java.lang.UNIXProcess@10c46f4
+    User: akamai
+    Email: rajain@akamai.com
+    CPCodes: 
+    Domain: staging
+    Network: FF
+    Queued uri[0]: [http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a] as [http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a]
+    To psrsend: [PURGE ARL http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a
+    Mapping id [17F1407859370607] to [1dfd399f-223a-11e4-8e19-0f5054654850]
+    Est time is: 780
+    sending results back
+==> 
+
+<== 
+ req-id:  17F1407859370607 
+ server-ip:     80.67.80.40 
+ received-at: Tue Aug 12 16:02:54 UTC 2014 
+    PURGEAPI 4.13
+    name = akamai
+    network = FF
+    options = action=remove
+    options = domain=staging
+    options = override=akamai
+    options = email-notification=rajain@akamai.com
+    uri = http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a
+    Checking option:action=remove
+    Val for option is: [remove]
+    Checking option:domain=staging
+    Val for option is: [staging]
+    Checking option:override=akamai
+    Val for option is: [akamai]
+    User [akamai] over-ride to [akamai]
+    Checking option:email-notification=rajain@akamai.com
+    Val for option is: [rajain@akamai.com]
+    Pattern: [^([\w_][.\w_\-]*@[.\w_\-]+)([,\s][\s]*([\w_][.\w_\-]*@[.\w_\-]+))*$]
+    Setting email to rajain@akamai.com
+    Setting email from nobody@akamai.com to rajain@akamai.com
+    Calling doPurge
+    psrsend started--java.lang.UNIXProcess@10c46f4
+    User: akamai
+    Email: rajain@akamai.com
+    CPCodes: 
+    Domain: staging
+    Network: FF
+    Queued uri[0]: [http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a] as [http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a]
+    To psrsend: [PURGE ARL http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a
+    Mapping id [17F1407859370607] to [1dfd399f-223a-11e4-8e19-0f5054654850]
+    Est time is: 780
+    sending results back
+==> 
+
+<== 
+ req-id:  17F1407859370607 
+ server-ip:     80.67.80.40 
+ received-at: Tue Aug 12 16:02:54 UTC 2014 
+    PURGEAPI 4.13
+    name = akamai
+    network = FF
+    options = action=remove
+    options = domain=staging
+    options = override=akamai
+    options = email-notification=rajain@akamai.com
+    uri = http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a
+    Checking option:action=remove
+    Val for option is: [remove]
+    Checking option:domain=staging
+    Val for option is: [staging]
+    Checking option:override=akamai
+    Val for option is: [akamai]
+    User [akamai] over-ride to [akamai]
+    Checking option:email-notification=rajain@akamai.com
+    Val for option is: [rajain@akamai.com]
+    Pattern: [^([\w_][.\w_\-]*@[.\w_\-]+)([,\s][\s]*([\w_][.\w_\-]*@[.\w_\-]+))*$]
+    Setting email to rajain@akamai.com
+    Setting email from nobody@akamai.com to rajain@akamai.com
+    Calling doPurge
+    psrsend started--java.lang.UNIXProcess@10c46f4
+    User: akamai
+    Email: rajain@akamai.com
+    CPCodes: 
+    Domain: staging
+    Network: FF
+    Queued uri[0]: [http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a] as [http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a]
+    To psrsend: [PURGE ARL http://www.bestbuy.com/edge/pdp/pdp/basepage\?skuId\=6389211\&origin\=p-browse-e1a
+    Mapping id [17F1407859370607] to [1dfd399f-223a-11e4-8e19-0f5054654850]
+    Est time is: 780
+    sending results back
+==> 
+
+
+2. With Device Size:
+<== 
+ req-id:  17F1407861764293 
+ server-ip:     96.16.96.63 
+ received-at: Tue Aug 12 16:42:48 UTC 2014 
+    PURGEAPI 4.13
+    name = akamai
+    network = FF
+    options = action=remove
+    options = domain=staging
+    options = override=akamai
+    options = email-notification=rajain@akamai.com
+    uri = http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&___DEVICE_SIZE=l&origin=p-browse-e1a
+    Checking option:action=remove
+    Val for option is: [remove]
+    Checking option:domain=staging
+    Val for option is: [staging]
+    Checking option:override=akamai
+    Val for option is: [akamai]
+    User [akamai] over-ride to [akamai]
+    Checking option:email-notification=rajain@akamai.com
+    Val for option is: [rajain@akamai.com]
+    Pattern: [^([\w_][.\w_\-]*@[.\w_\-]+)([,\s][\s]*([\w_][.\w_\-]*@[.\w_\-]+))*$]
+    Setting email to rajain@akamai.com
+    Setting email from nobody@akamai.com to rajain@akamai.com
+    Calling doPurge
+    psrsend started--java.lang.UNIXProcess@1f4144
+    User: akamai
+    Email: rajain@akamai.com
+    CPCodes: 
+    Domain: staging
+    Network: FF
+    Queued uri[0]: [http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&___DEVICE_SIZE=l&origin=p-browse-e1a] as [http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&___DEVICE_SIZE=l&origin=p-browse-e1a]
+    To psrsend: [PURGE ARL http://www.bestbuy.com/edge/pdp/pdp/basepage?skuId=6389211&___DEVICE_SIZE=l&origin=p-browse-e1a
+    Mapping id [17F1407861764293] to [b17e2d8a-223f-11e4-8b81-fff9a7bc7312]
+    Est time is: 420
+    sending results back
+==> 
+
+It doesn’t tell me if the purge was successful or not.
+
+Also, usually if the purge fails, the log shows it failed which I don’t see in the above logs. 
+Perhaps only shows when the purge fails due to a bad request/invalid URL?
+Here’s an example log:
+<== 
+ req-id:  17F1407811889090 
+ server-ip:     80.67.80.40 
+ received-at: Tue Aug 12 02:51:29 UTC 2014 
+    PURGEAPI 4.13
+    name = akamai
+    network = FF
+    options = action=remove
+    options = email-notification=mark.kilmer@bestbuy.com
+    options = override=mark.kilmer@bestbuy.com
+    uri = www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w
+    Checking option:action=remove
+    Val for option is: [remove]
+    Checking option:email-notification=mark.kilmer@bestbuy.com
+    Val for option is: [mark.kilmer@bestbuy.com]
+    Pattern: [^([\w_][.\w_\-]*@[.\w_\-]+)([,\s][\s]*([\w_][.\w_\-]*@[.\w_\-]+))*$]
+    Setting email to mark.kilmer@bestbuy.com
+    Setting email from nobody@akamai.com to mark.kilmer@bestbuy.com
+    Checking option:override=mark.kilmer@bestbuy.com
+    Val for option is: [mark.kilmer@bestbuy.com]
+    User [akamai] over-ride to [mark.kilmer@bestbuy.com]
+    Calling doPurge
+    psrsend started--java.lang.UNIXProcess@1292ae3
+    User: mark.kilmer@bestbuy.com
+    Email: mark.kilmer@bestbuy.com
+    CPCodes: 
+    Domain: production
+    Network: FF
+    Queued uri[0]: [www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w] as [www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w]
+    To psrsend: [PURGE ARL www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w
+    Purge Failed: [Error: Illegal or unauthorized ARL 'www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w']
+    Bad uri = www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w
+    Comparing [www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w] to [www.bestbuy.com/edge/pdp/pdp/basepage?skuId=8392428&___DEVICE_SIZE=l&origin=p-browse-w]
+    sending results back
+==> 
+
+
+
+
+

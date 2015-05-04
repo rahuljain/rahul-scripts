@@ -1,0 +1,28 @@
+<match:response.status value="0 000 500 503:504">
+  <forward:availability.fail-action2>
+    <request-host>sitefailover-netstorage.jcpenney.com</request-host>
+    <path>/site_down/site_down.html</path>
+    <type>serve-alternate</type>
+    <status>on</status>
+  </forward:availability.fail-action2>
+</match:response.status>
+<!-- path rewrites for site_down URLs -->
+<match:hoit host="sitefailover-netstorage.jcpenney.com">
+  <match:uri.wildcard case="off" value="/site_down*">
+    <forward:modify-path.by-rule>
+      <rule>/9901</rule>
+      <status>on</status>
+      <remove-slash>off</remove-slash>
+    </forward:modify-path.by-rule>
+    <forward:origin-server.host>jcpenney.download.akamai.com</forward:origin-server.host>
+    <forward:origin-server.dns-name.status>off</forward:origin-server.dns-name.status>
+    <forward:modify-host-header.status>off</forward:modify-host-header.status>
+    <edgeservices:redirect.chase>
+      <status>on</status>
+      <serve-404>on</serve-404>
+    </edgeservices:redirect.chase>
+    <security:ssl-forward-cert-verify.allow-cn>*.akamai.com</security:ssl-forward-cert-verify.allow-cn>
+    <security:ssl-forward-cert-verify.by-domain>on</security:ssl-forward-cert-verify.by-domain>
+    <security:ssl-forward-cert-verify.check-level>1</security:ssl-forward-cert-verify.check-level>
+  </match:uri.wildcard>
+</match:hoit>
