@@ -1,0 +1,29 @@
+<forward:modify-path.by-rule>
+	<rule>=/95752/holiday2011/premiersilvere.html</rule>
+	<status>on</status>
+	<remove-slash>on</remove-slash>
+</forward:modify-path.by-rule>
+<edgeservices:lma.edge-browser>on</edgeservices:lma.edge-browser>
+<forward:origin-server.host>mobilebby1.download.akamai.com</forward:origin-server.host>
+<forward:origin-server.dns-name.status>off</forward:origin-server.dns-name.status>
+<forward:modify-host-header.status>off</forward:modify-host-header.status>
+<forward:cache-parent.status>off</forward:cache-parent.status>
+<edgeservices:redirect.chase>
+	<status>on</status>
+	<serve-404>on</serve-404>
+</edgeservices:redirect.chase>
+
+<!-- OR -->
+
+<forward:modify-path.by-rule>
+	<rule>/95752/</rule>
+	<status>on</status>
+	<remove-slash>on</remove-slash>
+</forward:modify-path.by-rule>
+<forward:origin-server.host>mobilebby1.download.akamai.com</forward:origin-server.host>
+<forward:origin-server.dns-name.status>off</forward:origin-server.dns-name.status>
+<forward:modify-host-header.status>off</forward:modify-host-header.status>
+<edgeservices:redirect.chase>
+	<status>on</status>
+	<serve-404>on</serve-404>
+</edgeservices:redirect.chase>

@@ -1,0 +1,49 @@
+<!-- [BEGIN] Cookie based session stickiness -->
+<match:request.cookie name="ot" result="true" value="M" value-case="off">
+  <forward:origin-server.dns-name.value>192.251.124.20</forward:origin-server.dns-name.value> <!-- doesn't have to be datacenter IP. Could be datacenter address -->
+  <forward:origin-server.dns-name.status>on</forward:origin-server.dns-name.status>
+</match:request.cookie>
+<match:request.cookie name="ot" result="true" value="F" value-case="off">
+  <forward:origin-server.dns-name.value>167.187.200.23</forward:origin-server.dns-name.value>
+  <forward:origin-server.dns-name.status>on</forward:origin-server.dns-name.status>
+</match:request.cookie>
+<edgeservices:cookie.pass-set-cookie-policy>CONNECTION</edgeservices:cookie.pass-set-cookie-policy>
+<!-- [END] Cookie based session stickiness -->
+
+<!-- failover logic for the new Netstorage page -->
+<!-- simulate failover -->
+<!-- if a query parameter called server-failure=true is set, show the netstorage generic page -->
+<match:uri.query-string name="server-failure" name-case="off" value="true" value-case="off">
+  <forward:availability.health-detect.break-forward-connect>on</forward:availability.health-detect.break-forward-connect>
+</match:uri.query-string>
+<!-- failover logic - fail to netstorage -->
+<match:response.status value="0 000 400 500:504">
+  <forward:availability.fail-action2>
+    <status>on</status>
+    <request-host>%(AK_HOST)</request-host>
+    <path>/server-error/gen404/index.html</path>
+    <type>serve-302</type> <!-- could also be serve-alternate. you'll have to decide. -->
+  </forward:availability.fail-action2>
+</match:response.status>
+<!-- OR, if different host -->
+<match:response.status value="0 000 400 500:504">
+  <forward:availability.fail-action2>
+    <status>on</status>
+    <request-host>failover-target.com</request-host>
+    <path>/content/sitefailover/ans_ohno.html</path>
+    <type>serve-alternate</type>
+  </forward:availability.fail-action2>
+</match:response.status>
+
+<!-- Entirely optional -->
+<!-- Reducing client-timeout to trigger fail-overs faster and serve response as soon an possible to the end-user -->
+<!--
+<network:http.client-timeout>30s</network:http.client-timeout>
+<forward:availability.max-reconnects>2</forward:availability.max-reconnects>
+<forward:availability.health-detect>
+  <bad-ip-retry-interval>30s</bad-ip-retry-interval>
+  <badip-retry-count>1</badip-retry-count>
+  <status>on</status>
+</forward:availability.health-detect>
+
+-->

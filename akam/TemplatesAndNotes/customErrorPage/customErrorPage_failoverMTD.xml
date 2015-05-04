@@ -1,0 +1,18 @@
+<assign:extract-value>
+  <location>Query_String</location>
+  <location-id>AkErrorRef</location-id>
+  <variable-name>ERROR_REF_NUMBER</variable-name>
+</assign:extract-value>
+<edgecomputing:processor>
+  <value>akamaizer</value>
+  <allow-akamaizer>on</allow-akamaizer>
+  <status>on</status>
+</edgecomputing:processor>
+<edgecomputing:akamaizer.tag-filter>
+  <rule>#(.*)#Ref:$(ERROR_REF_NUMBER)#</rule>
+  <tags>p</tags>
+  <scope>block</scope>
+  <flags>g</flags>
+  <onmatch>continue</onmatch>
+  <type>include</type>
+</edgecomputing:akamaizer.tag-filter>

@@ -1,0 +1,74 @@
+<!-- [BEGIN] Auth/login -->
+<match:request.type value="CLIENT_REQ">
+  <assign:variable>
+    <name>ACCESS</name>
+    <value>deny</value>
+  </assign:variable>
+  <assign:variable>
+    <name>COOKIESALT</name>
+    <value>r@HJ@#ns4!tz</value>
+  </assign:variable>
+  <!-- generate cookie hash -->
+  <match:variable name="COOKIEHASH" result="false">
+    <assign:variable>
+      <name>COOKIEHASH</name>
+      <value>%(COOKIESALT)%(AK_CLIENT_IP)</value>
+      <transform>
+        <md5/>
+        <lower/>
+      </transform>
+    </assign:variable>
+  </match:variable>
+  <!-- allow access when either the header or the cookie are present -->
+  <!-- if header is present, create the cookie -->
+  <match:variable name="ACCESS" value="deny">
+    <match:request.header name="Authorization" value="Basic\ bWF4eF91c2VyOkxldG1lMW4k">
+      <edgeservices:cookie.set-fixed name="Authorized">
+        <status>on</status>
+        <domain>default domain</domain>
+        <expires>on browser close</expires>
+        <name>Authorized</name>
+        <value>%(COOKIEHASH)</value>
+        <path>/</path>
+      </edgeservices:cookie.set-fixed>
+      <assign:variable>
+        <name>ACCESS</name>
+        <value>allow</value>
+      </assign:variable>
+    </match:request.header>
+  </match:variable>
+  <!-- if header didn't work, check if cookie is present and that we have the right cookie - 
+  this is useful especially when switching from http to https and we don't want to prompt the user for auth again -->
+  <match:variable name="ACCESS" value="deny">
+    <match:request.cookie name="Authorized">
+      <assign:extract-value>
+        <variable-name>PRESENTEDCOOKIE_ORIG</variable-name>
+        <location>Cookie</location>
+        <location-id>Authorized</location-id>
+      </assign:extract-value>
+      <match:regex flags="i" regex=".*([a-zA-Z0-9]{32}).*"
+        string="%(PRESENTEDCOOKIE_ORIG)" variable-list="PRESENTEDCOOKIE"/>
+      <match:compare arg1="%(COOKIEHASH)" arg2="%(PRESENTEDCOOKIE)" op="eq">
+        <assign:variable>
+          <name>ACCESS</name>
+          <value>allow</value>
+        </assign:variable>
+      </match:compare>
+    </match:request.cookie>
+  </match:variable>
+</match:request.type>
+<match:variable name="ACCESS" value="deny">
+  <edgeservices:construct-response>
+    <status>on</status>
+    <http-status>401</http-status>
+    <body>Authenticate</body>
+    <force-cache-eviction>on</force-cache-eviction>
+  </edgeservices:construct-response>
+  <edgeservices:modify-outgoing-response.add-header>
+    <status>on</status>
+    <name>WWW-Authenticate</name>
+    <value>Basic realm="tjmaxx.tjx.com"</value>
+    <edge-only>on</edge-only>
+  </edgeservices:modify-outgoing-response.add-header>
+</match:variable>
+<!-- [END] Auth/login -->

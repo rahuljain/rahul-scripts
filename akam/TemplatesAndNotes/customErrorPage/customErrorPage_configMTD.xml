@@ -1,0 +1,79 @@
+<match:response.status value="403">
+  <match:region.attribute result="true" value="network-essl">
+    <assign:variable>
+      <name>GHOST_IP</name>
+      <value>%(AK_GHOST_SERVICE_IP)</value>
+    </assign:variable>
+  </match:region.attribute>
+  <match:region.attribute result="false" value="network-essl">
+    <assign:variable>
+      <name>GHOST_IP</name>
+      <value>%(AK_GHOST_IP)</value>
+    </assign:variable>
+  </match:region.attribute>
+  <match:regex regex="^(\d+)\.(\d+)\.(\d+)\.(\d+)$"
+    string="%(GHOST_IP)" variable-list="N1 N2 N3 N4">
+    <assign:variable>
+      <name>H1</name>
+      <value>%(N1)</value>
+      <transform>
+        <decimal-to-hex/>
+      </transform>
+    </assign:variable>
+    <assign:variable>
+      <name>H2</name>
+      <value>%(N2)</value>
+      <transform>
+        <decimal-to-hex/>
+      </transform>
+    </assign:variable>
+    <assign:variable>
+      <name>H3</name>
+      <value>%(N3)</value>
+      <transform>
+        <decimal-to-hex/>
+      </transform>
+    </assign:variable>
+    <assign:variable>
+      <name>H4</name>
+      <value>%(N4)</value>
+      <transform>
+        <decimal-to-hex/>
+      </transform>
+    </assign:variable>
+  </match:regex>
+  <match:variable name="H1" value="?" value-wildcard="on">
+    <assign:variable>
+      <name>H1</name>
+      <value>0%(H1)</value>
+    </assign:variable>
+  </match:variable>
+  <match:variable name="H2" value="?" value-wildcard="on">
+    <assign:variable>
+      <name>H2</name>
+      <value>0%(H2)</value>
+    </assign:variable>
+  </match:variable>
+  <match:variable name="H3" value="?" value-wildcard="on">
+    <assign:variable>
+      <name>H3</name>
+      <value>0%(H3)</value>
+    </assign:variable>
+  </match:variable>
+  <match:variable name="H4" value="?" value-wildcard="on">
+    <assign:variable>
+      <name>H4</name>
+      <value>0%(H4)</value>
+    </assign:variable>
+  </match:variable>
+  <assign:variable>
+    <name>AKAMAI_ERROR_REFERENCE_NUMBER</name>
+    <value>00.%(H4)%(H3)%(H2)%(H1).%(AK_CURRENT_TIME).%(AK_REQUEST_ID)</value>
+  </assign:variable>
+  <forward:availability.fail-action2>
+    <type>serve-alternate</type>
+    <status>on</status>
+    <request-host>siteissues.jcpenney.com</request-host>
+    <path>/customErrorPage/errorPage.html?AkErrorRef=%(AKAMAI_ERROR_REFERENCE_NUMBER)</path>
+  </forward:availability.fail-action2>
+</match:response.status>  
